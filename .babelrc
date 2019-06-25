@@ -1,0 +1,34 @@
+{
+  "env": {
+    "cjs": {
+      "presets": [
+        [
+          "@stellar-apps/es",
+          {
+            "env": {
+              "corejs": 3,
+              "useBuiltIns": "usage",
+              "targets": {"node": "10"}
+            },
+            "runtime": false
+          }
+        ]
+      ]
+    },
+    "es": {
+      "presets": [
+        [
+          "@stellar-apps/es",
+          {
+            "env": {
+              "useBuiltIns": false,
+              "modules": false,
+              "targets": {"node": "10"}
+            },
+            "runtime": false
+          }
+        ]
+      ]
+    }
+  }
+}
