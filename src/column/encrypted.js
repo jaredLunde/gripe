@@ -2,31 +2,19 @@ import aes256 from 'aes256'
 import emptyObj from 'empty/object'
 
 
-const encryptedRe = /^\$aes256\$[a-zA-Z0-9\/\+]+$/
+const encryptedRe = /^aes256\$[a-zA-Z0-9\/\+]+$/
 
-export const isEncrypted = (value) => {
-  return value.match(encryptedRe)
-}
+export const isEncrypted = (value) => value.match(encryptedRe) !== null
 
 export const encrypt = (value, secret) => {
-  if (isEncrypted(value)) {
-    return value
-  }
-
-  return `$aes256$${aes256.encrypt(secret, value)}`
+  if (isEncrypted(value)) return value
+  return `aes256$${aes256.encrypt(secret, value)}`
 }
 
 export const decrypt = (value, secret) => {
-  if (!value) {
-    return
-  }
-
-  let [_, id, encryptedValue] = value.split('$')
-  if (id !== 'aes256') {
-    return
-  }
-
-  return aes256.decrypt(secret, encryptedValue)
+  if (!value) return
+  let [id, encryptedValue] = value.split('$')
+  return id !== 'aes256' ? void 0 : aes256.decrypt(secret, encryptedValue)
 }
 
 export default (options = emptyObj) => {

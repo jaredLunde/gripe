@@ -114,9 +114,8 @@ export default ({
     },
     async beforeUpdate (model, name, modelOptions) {
       const value = model[name]
-      if (modelOptions.patch && value === void 0) {
+      if (modelOptions.patch && value === void 0)
         return
-      }
 
       validate(name, value, validationOptions)
       model[name] = await hash(value, getSalt(), hashOptions)

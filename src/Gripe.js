@@ -3,7 +3,6 @@ import Sortable from './Sortable'
 import Upsertable from './Upsertable'
 
 
-
 const hooks = [
   '$beforeValidate',
   '$afterValidate',

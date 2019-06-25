@@ -1,4 +1,3 @@
-import {raw} from 'objection'
 import {pascalCase} from 'change-case'
 
 
