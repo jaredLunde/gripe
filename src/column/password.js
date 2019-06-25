@@ -58,9 +58,7 @@ export const verify = async (original, against) => {
 const validate = (column, value, options = emptyObj) => {
   const {minLength, maxLength, pattern} = options
 
-  if (!value) {
-    return true
-  }
+  if (!value) return true
 
   if (minLength) {
     validateInvariant(
@@ -91,17 +89,18 @@ const validate = (column, value, options = emptyObj) => {
 
 const defaultMatch = /.*/
 
-export default ({
-  // hash options
-  hashOptions,
-  // validation
-  minLength = 8,
-  maxLength = Infinity,
-  pattern = defaultMatch,
-  // schema
-  required,
-  ...schema
-}) => {
+export default (options = emptyObj) => {
+  const {
+    // hash options
+    hashOptions,
+    // validation
+    minLength = 8,
+    maxLength = Infinity,
+    pattern = defaultMatch,
+    // schema
+    required,
+    ...schema
+  } = options
   const validationOptions = {minLength, maxLength, pattern}
 
   return {
@@ -121,7 +120,7 @@ export default ({
       model[name] = await hash(value, getSalt(), hashOptions)
     },
     // helpers
-    hash,
+    hash: value => hash(value, getSalt(), hashOptions),
     validate,
     verify,
     isScryptHash,

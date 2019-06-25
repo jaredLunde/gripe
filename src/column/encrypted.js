@@ -21,7 +21,7 @@ export default (options = emptyObj) => {
   const {required, getSecret, ...schema} = options
 
   if (getSecret === void 0)
-    throw ({message: `No getSecret() callback was provided to 'encrypt' column`})
+    throw ({message: `No getSecret(model) callback was provided to 'encrypt' column`})
 
   return {
     beforeDelete (model, name) {
@@ -30,22 +30,19 @@ export default (options = emptyObj) => {
         return
       }
 
-      model[name] = encrypt(value, getSecret())
+      model[name] = encrypt(value, getSecret(model))
     },
     beforeInsert (model, name) {
       const value = model[name]
-      model[name] = encrypt(value, getSecret())
+      model[name] = encrypt(value, getSecret(model))
     },
     beforeUpdate (model, name, modelOptions) {
       const value = model[name]
-      if (modelOptions.patch && value === void 0) {
-        return
-      }
-
-      model[name] = encrypt(value, getSecret())
+      if (modelOptions.patch && value === void 0) return
+      model[name] = encrypt(value, getSecret(model))
     },
-    encrypt,
-    decrypt,
+    encrypt: value => encrypt(value, getSecret({})),
+    decrypt: value => decrypt(value, getSecret({})),
     isEncrypted,
     type: 'string',
     required,
