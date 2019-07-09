@@ -5,10 +5,11 @@ import emptyObj from 'empty/object'
 export const keyspace = 'abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'
 const keyspaceRe = new RegExp(`^[${keyspace}]+$`)
 export const hashids = new HashIDs('', 0, keyspace)
+const maxSafeRe = /.{1,15}/g
 
 export const encode = (uid) => {
   if (isNaN(uid) === false)
-    return hashids.encode(uid)
+    return hashids.encode(uid.match(maxSafeRe))
 
   return uid
 }
@@ -23,7 +24,7 @@ export const decode = (uid) => {
   return uid
 }
 
-export default (options = emptyObj) => {
+const main = (options = emptyObj) => {
   const {required, ...schema} = options
   return {
     beforeDelete (model, name) {
@@ -51,3 +52,7 @@ export default (options = emptyObj) => {
     schema
   }
 }
+
+main.encode = encode
+main.decode = decode
+export default main
