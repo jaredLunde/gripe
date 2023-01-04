@@ -1203,10 +1203,10 @@ core-js-pure@3.1.4:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.1.4.tgz#5fa17dc77002a169a3566cc48dc774d2e13e3769"
   integrity sha512-uJ4Z7iPNwiu1foygbcZYJsJs1jiXrTTCvxfLDXNhI/I+NHbSIEyr548y4fcsCEyWY0XgfAG/qqaunJ1SThHenA==
 
-core-js@3:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.1.4.tgz#3a2837fc48e582e1ae25907afcd6cf03b0cc7a07"
-  integrity sha512-YNZN8lt82XIMLnLirj9MhKDFZHalwzzrL9YLt6eb0T5D0EDl4IQ90IGkua8mHbnxNrkj1d8hbdizMc0Qmg1WnQ==
+core-js@^3.1.4:
+  version "3.27.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.27.1.tgz#23cc909b315a6bb4e418bf40a52758af2103ba46"
+  integrity sha512-GutwJLBChfGCpwwhbYoqfv03LAfmiz7e7D/BNxzeMxwQf10GRSzqiOjx7AmtEk+heiD/JWmBuyBPgFtx0Sg1ww==
 
 core-util-is@~1.0.0:
   version "1.0.2"
@@ -1837,11 +1837,9 @@ json-parse-better-errors@^1.0.1:
   integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
 
 json5@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-2.1.0.tgz#e7a0c62c48285c628d20a10b85c89bb807c32850"
-  integrity sha512-8Mh9h6xViijj36g7Dxi+Y4S6hNGV96vcJZr/SrlHh1LR/pEn/8j/+qIBbs44YKl69Lrfctp4QD+AdWLTMqEZAQ==
-  dependencies:
-    minimist "^1.2.0"
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
+  integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
 jstransform@^11.0.3:
   version "11.0.3"
